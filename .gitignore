@@ -1,0 +1,13 @@
+/.bundle/
+/.yardoc/
+/coverage/
+/doc/
+/js/
+/pkg/
+/tmp/
+node_modules/
+Gemfile.lock
+package-lock.json
+*.bundle
+*.gem
+*.log

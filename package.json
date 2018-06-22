@@ -1,0 +1,36 @@
+{
+  "name": "asciidoctor-katex",
+  "version": "0.0.0",
+  "description": "TODO",
+  "author": "Jakub Jirutka <jakub@jirutka.cz>",
+  "license": "MIT",
+  "homepage": "https://github.com/jirutka/asciidoctor-katex/",
+  "bugs": {
+    "url": "https://github.com/jirutka/asciidoctor-katex/issues/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jirutka/asciidoctor-katex.git"
+  },
+  "main": "js/asciidoctor-katex.js",
+  "files": [
+    "js/asciidoctor-katex.js",
+    "LICENSE",
+    "README.adoc"
+  ],
+  "scripts": {
+    "prepublishOnly": "bundle install && bundle exec rake build:js"
+  },
+  "keywords": [
+    "asciidoctor",
+    "asciidoc",
+    "extension",
+    "katex",
+    "latex",
+    "opal"
+  ],
+  "dependencies": {
+    "asciidoctor.js": "~1.5.6",
+    "opal-runtime": "^1.0.3"
+  }
+}

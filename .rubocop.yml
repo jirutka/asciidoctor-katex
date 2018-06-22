@@ -1,0 +1,94 @@
+AllCops:
+  TargetRubyVersion: 2.3
+
+# False positive...
+Bundler/DuplicatedGem:
+  Enabled: false
+
+# I prefer no empty line between magic comment and requires.
+Layout/EmptyLineAfterMagicComment:
+  Enabled: false
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+# I prefer to put two spaces before inline comment, Rubocop does not allow to
+# set exception for this.
+Layout/ExtraSpacing:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Lint/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
+Layout/IndentHash:
+  Exclude:
+    - Rakefile
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/CyclomaticComplexity:
+  Max: 12
+
+Metrics/LineLength:
+  Max: 99
+
+Metrics/MethodLength:
+  Max: 35
+
+Metrics/PerceivedComplexity:
+  Max: 12
+
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
+Naming/FileName:
+  Exclude:
+    - 'lib/*.rb'
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+# I don't use guard clause when line would be too long.
+Style/GuardClause:
+  Enabled: false
+
+Style/HashSyntax:
+  Exclude:
+    - Rakefile
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - Gemfile*
+    - Rakefile
+    - '*.gemspec'
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/NegatedIf:
+  Enabled: false
+
+Style/RedundantFreeze:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma

@@ -1,0 +1,6 @@
+--title "Asciidoctor KaTeX"
+--default-return void
+--protected
+--markup markdown
+-
+LICENSE
