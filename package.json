@@ -1,7 +1,7 @@
 {
   "name": "asciidoctor-katex",
   "version": "0.0.0",
-  "description": "TODO",
+  "description": "Asciidoctor extension that converts latexmath to HTML using KaTeX at build-time",
   "author": "Jakub Jirutka <jakub@jirutka.cz>",
   "license": "MIT",
   "homepage": "https://github.com/jirutka/asciidoctor-katex/",
@@ -31,6 +31,7 @@
   ],
   "dependencies": {
     "asciidoctor.js": "~1.5.6",
+    "katex": "^0.9.0",
     "opal-runtime": "^1.0.3"
   }
 }

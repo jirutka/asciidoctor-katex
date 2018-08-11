@@ -8,13 +8,14 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/jirutka/asciidoctor-katex/'
   s.license     = 'MIT'
 
-  s.summary     = ""
+  s.summary     = 'Asciidoctor extension that converts latexmath to HTML using KaTeX at build-time'
 
   s.files       = Dir['lib/**/*', '*.gemspec', 'LICENSE*', 'README*']
 
   s.required_ruby_version = '>= 2.3'
 
   s.add_runtime_dependency 'asciidoctor', '~> 1.5.6'
+  s.add_runtime_dependency 'katex', '~> 0.4.3'
 
   s.add_development_dependency 'kramdown', '~> 1.17'
   s.add_development_dependency 'rake', '~> 12.0'
