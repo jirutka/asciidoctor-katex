@@ -1,8 +1,8 @@
 /.bundle/
 /.yardoc/
 /coverage/
+/dist/
 /doc/
-/js/
 /pkg/
 /tmp/
 node_modules/

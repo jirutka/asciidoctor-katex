@@ -12,9 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/jirutka/asciidoctor-katex.git"
   },
-  "main": "js/asciidoctor-katex.js",
+  "main": "dist/asciidoctor-katex.js",
   "files": [
-    "js/asciidoctor-katex.js",
+    "dist/asciidoctor-katex.js",
     "LICENSE",
     "README.adoc"
   ],

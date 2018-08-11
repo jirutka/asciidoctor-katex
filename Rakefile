@@ -34,7 +34,7 @@ namespace :build do
     builder.append_paths 'lib'
     builder.build 'asciidoctor/katex'
 
-    out_file = 'js/asciidoctor-katex.js'
+    out_file = 'dist/asciidoctor-katex.js'
 
     mkdir_p(File.dirname(out_file), verbose: false)
     File.open(out_file, 'w') do |file|
