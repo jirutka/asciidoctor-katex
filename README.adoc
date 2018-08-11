@@ -86,8 +86,19 @@ IMPORTANT: Bundler automatically _requires_ all the specified gems.
 ----
 // Load asciidoctor.js and {gem-name}.
 const asciidoctor = require('asciidoctor.js')()
-katex = require('katex')  // katex must be global (will be fixed later)
-require('{gem-name}')
+const asciidoctorKatex = require('{gem-name}')
+
+// See documentation at the end of this section.
+const options = {
+  katexOptions: {
+    macros: {
+      "\\RR": "\\mathbb{R}",
+    },
+  },
+}
+
+// Configure the extension and register it into global registry.
+asciidoctorKatex.register(asciidoctor.Extensions, options)
 
 // Convert the content to HTML.
 const content = `
@@ -98,6 +109,28 @@ Do some math: stem:[E = mc^2]
 const html = asciidoctor.convert(content)
 console.log(html)
 ----
+
+
+You may also register the extension into a custom extensions registry:
+
+[source, js]
+const registry = asciidoctor.Extensions.create()
+asciidoctorKatex.register(registry, options)
+
+.*Options:*
+katex::
+  The katex object to use for rendering.
+  Defaults to `require('katex')`.
+
+requireStemAttr::
+  Whether to require `stem` attribute to be defined (Asciidoctor’s standard behaviour).
+  Set to `false` to process latexmath even when `stem` attribute is not defined.
+  Default is `true`. +
+  Note that the default stem type hard-coded by Asciidoctor is `asciimath` (not `latexmath`), so `[stem]` block and `++stem:[...]++` macro will not be rendered anyway (only `[latexmath]` block and `++latexmath:[...]++` macro).
+
+katexOptions::
+  The default options for `katex.render()`.
+  Defaults to empty object.
 
 
 == License

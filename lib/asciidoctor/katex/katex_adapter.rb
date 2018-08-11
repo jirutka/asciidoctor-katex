@@ -9,7 +9,7 @@ module Asciidoctor::Katex
     # @param default_options [Hash] the default options for the KaTeX renderer.
     # @param katex_object the katex object to use under Opal (defaults to
     #   global variable `katex`).
-    def initialize(default_options = {}, katex_object: nil)
+    def initialize(default_options = {}, katex_object = nil)
       @default_options = default_options
       @katex_object = katex_object || `katex` if RUBY_PLATFORM == 'opal'
     end

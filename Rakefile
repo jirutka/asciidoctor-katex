@@ -32,12 +32,16 @@ namespace :build do
       dynamic_require_severity: :error,
     })
     builder.append_paths 'lib'
-    builder.build 'asciidoctor-katex'
+    builder.build 'asciidoctor/katex'
 
     out_file = 'js/asciidoctor-katex.js'
 
     mkdir_p(File.dirname(out_file), verbose: false)
-    File.binwrite out_file, builder.to_s
+    File.open(out_file, 'w') do |f|
+      f << builder.to_s
+      f << "\n"
+      f << File.read('src/asciidoctor-katex.js')
+    end
     File.binwrite "#{out_file}.map", builder.source_map
   end
 end

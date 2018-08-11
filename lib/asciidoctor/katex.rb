@@ -4,6 +4,8 @@ require 'asciidoctor/extensions' unless RUBY_PLATFORM == 'opal'
 require 'asciidoctor/katex/version'
 require 'asciidoctor/katex/treeprocessor'
 
-Asciidoctor::Extensions.register do
-  treeprocessor Asciidoctor::Katex::Treeprocessor
+unless RUBY_PLATFORM == 'opal'
+  Asciidoctor::Extensions.register do
+    treeprocessor Asciidoctor::Katex::Treeprocessor
+  end
 end
