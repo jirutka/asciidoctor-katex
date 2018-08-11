@@ -4,7 +4,7 @@
 :gem-name: asciidoctor-katex
 :gh-name: jirutka/{gem-name}
 :gh-branch: master
-:codacy-id: N/A
+:codacy-id: 58f6aa6e3ef04c8aad1ecd276a8a2c35
 
 ifdef::env-github[]
 image:https://travis-ci.com/{gh-name}.svg?branch={gh-branch}[Build Status, link="https://travis-ci.com/{gh-name}"]

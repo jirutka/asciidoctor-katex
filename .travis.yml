@@ -41,7 +41,7 @@ jobs:
 
 env:
   global:
-    secure: TODO  # CODACY_PROJECT_TOKEN
+    secure: "Ud9YaMRxL9hpEN5wMSQtqtFSWWA2XKobwqfqatGQBvJTb48Z5ehppT/BZBvFpk10SHNNL+x6Yn2YMDm6dcn/1uvAiEHK/nWmtXss9pC57UVcBiglnlkJxUxCxYacTfWaDj6J44lYscCgXbzmO68vsvVMPSchSzeeD2+o26PWAxreONqBKvMOkaGgqB1cVFnChkn+OOK8SvUv8C9eT4MMyixciWX8w9V5/aCHwo4yzmhU+2PNXMxD9kFnAx3pW8WZNFltSK/DHO31NkSKrD4cvxus4W+ahpErTczx8zSedT5ij37FiO3L7NrZj5AlQi3+TR+C+OPmVsba6HHiMdyN8h4FqwYNu2rv8oDn3dnvS9wMkdoXwYD5zntXhcY4fmfZ2liHEtXuGlwTf3sRjTBIz4LevoTTClogLzfvhJ7wzq+Xdiwlaq2jd7JWAzEjiOMTvbzpHSgopfnw8961joLGaaUkAMT2Mbuznm+kAhCJ69E7iigwdd1DS11TJrbsz/PDyZtOojTWfCZ9oRinM4KO32xzYeI1Vc/M6yj/C1kQqCi/G3rKf4UdcxPn2/R5xxjO3itInd8+qMSGEspJPbb7eBgzUJXQHjXqYQVM3JlNFnxHaH8WuyaQ2Y7mFYhcNeVeEwX0IUptJrKMs44icbu5qLpTsmYHcBTsoV1503y5RPY="  # CODACY_PROJECT_TOKEN
 
 script:
   - bundle exec rake spec
