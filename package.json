@@ -1,6 +1,6 @@
 {
   "name": "asciidoctor-katex",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Asciidoctor extension that converts latexmath to HTML using KaTeX at build-time",
   "author": "Jakub Jirutka <jakub@jirutka.cz>",
   "license": "MIT",
