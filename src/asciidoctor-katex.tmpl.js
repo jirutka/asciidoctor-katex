@@ -1,7 +1,27 @@
 (function (Opal) {
-  var mainModule = Opal.const_get_qualified(Opal.Asciidoctor, 'Katex');
-  var KatexAdapterClass = Opal.const_get_qualified(mainModule, 'KatexAdapter');
-  var TreeprocessorClass = Opal.const_get_qualified(mainModule, 'Treeprocessor');
+  function initializeGeneratedCode () {
+//OPAL-GENERATED-CODE//
+  }
+
+  var katexModule;
+
+  function resolveModule (name) {
+    if (!katexModule) {
+      initializeGeneratedCode();
+      katexModule = Opal.const_get_qualified(Opal.Asciidoctor, 'Katex');
+    }
+    if (!name) {
+      return katexModule
+    }
+    return Opal.const_get_qualified(katexModule, name);
+  }
+
+  /**
+   * @return {String} version of this extension.
+   */
+  function getVersion () {
+    return resolveModule().$$const.VERSION.toString();
+  }
 
   /**
    * Creates and configures a new instance of Asciidoctor::Katex::Treeprocessor.
@@ -18,6 +38,9 @@
    */
   function TreeProcessor (opts) {
     opts = opts || {};
+
+    var KatexAdapterClass = resolveModule('KatexAdapter');
+    var TreeprocessorClass = resolveModule('Treeprocessor');
 
     var katex = opts.katex || require('katex');
     var adapter = KatexAdapterClass.$new(Opal.hash(opts.katexOptions || {}), katex);
@@ -54,8 +77,8 @@
   }
 
   var facade = {
-    version: mainModule.$$const.VERSION.toString(),
     TreeProcessor: TreeProcessor,
+    getVersion: getVersion,
     register: register,
   };
 
