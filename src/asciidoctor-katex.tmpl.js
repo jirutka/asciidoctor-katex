@@ -1,40 +1,38 @@
 (function (Opal) {
-  function initializeGeneratedCode () {
+  function initialize (Opal) {
 //OPAL-GENERATED-CODE//
   }
 
-  var katexModule
+  var mainModule
 
   function resolveModule (name) {
-    if (!katexModule) {
-      initializeGeneratedCode()
-      katexModule = Opal.const_get_qualified(Opal.Asciidoctor, 'Katex')
+    if (!mainModule) {
+      checkAsciidoctor()
+      initialize(Opal)
+      mainModule = Opal.const_get_qualified(Opal.Asciidoctor, 'Katex')
     }
     if (!name) {
-      return katexModule
+      return mainModule
     }
-    return Opal.const_get_qualified(katexModule, name)
+    return Opal.const_get_qualified(mainModule, name)
+  }
+
+  function checkAsciidoctor () {
+    if (typeof Opal.Asciidoctor === 'undefined') {
+      throw new TypeError('Asciidoctor.js is not loaded')
+    }
   }
 
   /**
-   * @return {String} version of this extension.
-   */
-  function getVersion () {
-    return resolveModule().$$const.VERSION.toString()
-  }
-
-  /**
-   * Creates and configures a new instance of Asciidoctor::Katex::Treeprocessor.
-   *
    * @param {Object} opts
-   * @param {Object} opts.katex The katex object to use for rendering.
+   * @param opts.katex The katex object to use for rendering.
    *   Defaults to `require('katex')`.
    * @param {boolean} opts.requireStemAttr `true` to not process math expressions
    *   when `stem` attribute is not declared, `false` to process anyway.
    *   Defaults to `true`.
    * @param {Object} opts.katexOptions The default options for `katex.render()`.
    *   Defaults to empty object.
-   * @return {TreeProcessor}
+   * @return A new instance of `Asciidoctor::Katex::Treeprocessor`.
    */
   function TreeProcessor (opts) {
     opts = opts || {}
@@ -52,22 +50,34 @@
   }
 
   /**
+   * @return {string} Version of this extension.
+   */
+  function getVersion () {
+    return resolveModule().$$const.VERSION.toString();
+  }
+
+  /**
    * Creates and configures the Katex extension and registers it into the given
    * extensions registry.
    *
-   * @param {Object} registry The Asciidoctor extensions registry to register this
-   *   extension into. It should be `Asciidoctor().Extensions` or
-   *   `Asciidoctor.Extensions.create()`.
-   * @param {Object} opts See {TreeProcessor}.
-   * @return The given *registry*.
+   * @param registry The Asciidoctor extensions registry to register this
+   *   extension into. Defaults to the global Asciidoctor registry.
+   * @param {Object} opts See {TreeProcessor} (optional).
+   * @throws {TypeError} if the *registry* is invalid or Asciidoctor.js is not loaded.
    */
   function register (registry, opts) {
-    var processor = TreeProcessor(opts)
+    if (!registry) {
+      checkAsciidoctor()
+      registry = Opal.Asciidoctor.Extensions
+    }
+    var processor = TreeProcessor(opts);
 
+    // global registry
     if (typeof registry.register === 'function') {
       registry.register(function () {
         this.treeProcessor(processor)
       })
+    // custom registry
     } else if (typeof registry.block === 'function') {
       registry.treeProcessor(processor)
     } else {
