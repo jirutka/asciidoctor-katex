@@ -3,24 +3,24 @@
 //OPAL-GENERATED-CODE//
   }
 
-  var katexModule;
+  var katexModule
 
   function resolveModule (name) {
     if (!katexModule) {
-      initializeGeneratedCode();
-      katexModule = Opal.const_get_qualified(Opal.Asciidoctor, 'Katex');
+      initializeGeneratedCode()
+      katexModule = Opal.const_get_qualified(Opal.Asciidoctor, 'Katex')
     }
     if (!name) {
       return katexModule
     }
-    return Opal.const_get_qualified(katexModule, name);
+    return Opal.const_get_qualified(katexModule, name)
   }
 
   /**
    * @return {String} version of this extension.
    */
   function getVersion () {
-    return resolveModule().$$const.VERSION.toString();
+    return resolveModule().$$const.VERSION.toString()
   }
 
   /**
@@ -37,18 +37,18 @@
    * @return {TreeProcessor}
    */
   function TreeProcessor (opts) {
-    opts = opts || {};
+    opts = opts || {}
 
-    var KatexAdapterClass = resolveModule('KatexAdapter');
-    var TreeprocessorClass = resolveModule('Treeprocessor');
+    var KatexAdapterClass = resolveModule('KatexAdapter')
+    var TreeprocessorClass = resolveModule('Treeprocessor')
 
-    var katex = opts.katex || require('katex');
-    var adapter = KatexAdapterClass.$new(Opal.hash(opts.katexOptions || {}), katex);
+    var katex = opts.katex || require('katex')
+    var adapter = KatexAdapterClass.$new(Opal.hash(opts.katexOptions || {}), katex)
 
     return TreeprocessorClass.$new(Opal.hash({
       require_stem_attr: opts.requireStemAttr || true,
       katex_renderer: adapter,
-    }));
+    }))
   }
 
   /**
@@ -62,28 +62,28 @@
    * @return The given *registry*.
    */
   function register (registry, opts) {
-    var processor = TreeProcessor(opts);
+    var processor = TreeProcessor(opts)
 
     if (typeof registry.register === 'function') {
       registry.register(function () {
-        this.treeProcessor(processor);
+        this.treeProcessor(processor)
       })
     } else if (typeof registry.block === 'function') {
-      registry.treeProcessor(processor);
+      registry.treeProcessor(processor)
     } else {
-      throw new TypeError('Invalid registry object');
+      throw new TypeError('Invalid registry object')
     }
-    return registry;
+    return registry
   }
 
   var facade = {
     TreeProcessor: TreeProcessor,
     getVersion: getVersion,
     register: register,
-  };
+  }
 
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = facade;
+    module.exports = facade
   }
-  return facade;
+  return facade
 })(Opal);
