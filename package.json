@@ -30,7 +30,7 @@
     "opal"
   ],
   "dependencies": {
-    "katex": "^0.9.0"
+    "katex": ">=0.9.0 <1.0.0"
   },
   "devDependencies": {
     "asciidoctor.js": "~1.5.6"
