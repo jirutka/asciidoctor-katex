@@ -61,6 +61,10 @@ Style/BlockDelimiters:
 Style/ClassAndModuleChildren:
   Enabled: false
 
+# It's somehow confused by assignment to KatexAdapter in {opal,ruby}_katex_adapter.rb
+Style/Documentation:
+  Enabled: false
+
 Style/EmptyMethod:
   EnforcedStyle: expanded
 

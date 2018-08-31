@@ -2,8 +2,13 @@
 require 'asciidoctor' unless RUBY_PLATFORM == 'opal'
 require 'asciidoctor/extensions' unless RUBY_PLATFORM == 'opal'
 require 'asciidoctor/katex/version'
-require 'asciidoctor/katex/katex_adapter'
 require 'asciidoctor/katex/stem_converter_decorator'
+
+if RUBY_PLATFORM == 'opal'
+  require 'asciidoctor/katex/opal_katex_adapter'
+else
+  require 'asciidoctor/katex/ruby_katex_adapter'
+end
 
 module Asciidoctor::Katex
   # Asciidoctor processor that renders delimited latexmath expressions using

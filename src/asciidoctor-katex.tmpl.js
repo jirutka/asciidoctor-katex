@@ -37,7 +37,7 @@
   function TreeProcessor (opts) {
     opts = opts || {}
 
-    var KatexAdapterClass = resolveModule('KatexAdapter')
+    var KatexAdapterClass = resolveModule('OpalKatexAdapter')
     var TreeprocessorClass = resolveModule('Treeprocessor')
 
     var katex = opts.katex || require('katex')
