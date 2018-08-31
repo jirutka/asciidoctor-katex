@@ -67,7 +67,15 @@ module Asciidoctor::Katex
     # @return [Regexp]
     def regexp_from_delimiters(delimiters)
       open, close = delimiters.map { |s| ::Regexp.escape(s) }
-      /#{open}(.+)#{close}/m
+
+      # XXX: Opal 0.11.x does not properly escape interpolated regexps and
+      #   Regexp.new does not work at all. Thus we have to escape \s\S in
+      #   advance when running on Opal and this faulty behaviour is detected.
+      if ::RUBY_PLATFORM == 'opal' && /#{''}\\s/ == /\s/
+        /#{open}([\\s\\S]+)#{close}/m
+      else
+        /#{open}([\s\S]+)#{close}/m
+      end
     end
 
     # @param str [String]

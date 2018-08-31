@@ -98,6 +98,19 @@ describe 'Integration Tests' do
       should have_tag 'mo', text: '>'
       should_not have_tag '.katex-error'
     end
+
+    # Issue #3 (affects only JS)
+    it 'renders multi-line stem block processed by KaTeX' do
+      given <<~ADOC
+        [stem]
+        ++++
+        \\alpha = 42
+        \\beta = 55
+        ++++
+      ADOC
+      should have_tag 'math'
+      should_not have_tag '.katex-error'
+    end
   end
 
 
