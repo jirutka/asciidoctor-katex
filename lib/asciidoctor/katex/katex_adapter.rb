@@ -14,16 +14,6 @@ module Asciidoctor::Katex
       @katex_object = katex_object || `katex` if RUBY_PLATFORM == 'opal'
     end
 
-    # @return [Boolean] whether is KaTeX library installed and loaded.
-    #   This is useful only under Opal.
-    def available?
-      if RUBY_PLATFORM == 'opal'
-        `#{@katex_object} != 'undefined' && #{@katex_object}.renderToString != undefined`
-      else
-        defined? ::Katex
-      end
-    end
-
     # Renders the given math expression to HTML using KaTeX.
     #
     # @param math [String] the math (LaTeX) expression.
@@ -44,15 +34,6 @@ module Asciidoctor::Katex
     end
 
     alias call render
-
-    # @return [String] version of the KaTeX library.
-    def version
-      if RUBY_PLATFORM == 'opal'
-        '0.9.0'  # TODO: replace with `katex.version` after update to 0.10+.
-      else
-        ::Katex::KATEX_VERSION.sub(/^v/, '')
-      end
-    end
 
     private
 
