@@ -43,9 +43,8 @@ module Asciidoctor::Katex
       isblock = node.block?
 
       output.sub(isblock ? @block_re : @inline_re) do
-        @math_renderer.call(::Regexp.last_match[1].strip,
-                            display_mode: isblock,
-                            throw_on_error: @throw_on_error)
+        math = decode_html_entities(::Regexp.last_match[1].strip)
+        @math_renderer.call(math, display_mode: isblock, throw_on_error: @throw_on_error)
       end
     end
 
@@ -69,6 +68,14 @@ module Asciidoctor::Katex
     def regexp_from_delimiters(delimiters)
       open, close = delimiters.map { |s| ::Regexp.escape(s) }
       /#{open}(.+)#{close}/m
+    end
+
+    # @param str [String]
+    # @return [String]
+    def decode_html_entities(str)
+      str.gsub('&lt;', '<')
+        .gsub('&gt;', '>')
+        .gsub('&amp;', '&')
     end
   end
 end

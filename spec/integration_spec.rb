@@ -88,6 +88,16 @@ describe 'Integration Tests' do
 
     include_examples :processed, 'stem'
     include_examples :processed, 'latexmath'
+
+    # Issue #2
+    it 'renders inline stem:[] with "<" and ">" processed by KaTeX' do
+      given 'Do some math: stem:[a < b > c]'
+
+      should have_tag 'math'
+      should have_tag 'mo', text: '<'
+      should have_tag 'mo', text: '>'
+      should_not have_tag '.katex-error'
+    end
   end
 
 
