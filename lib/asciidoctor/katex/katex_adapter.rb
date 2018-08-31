@@ -10,7 +10,7 @@ module Asciidoctor::Katex
     # @param katex_object the katex object to use under Opal (defaults to
     #   global variable `katex`).
     def initialize(default_options = {}, katex_object = nil)
-      @default_options = default_options
+      @default_options = hash_camelize(default_options)
       @katex_object = katex_object || `katex` if RUBY_PLATFORM == 'opal'
     end
 
@@ -32,7 +32,7 @@ module Asciidoctor::Katex
     #   See <https://github.com/Khan/KaTeX#rendering-options>.
     # @return [String] a rendered HTML fragment.
     def render(math, opts = {})
-      opts = hash_camelize(opts || {})
+      opts = @default_options.merge(hash_camelize(opts))
 
       if RUBY_PLATFORM == 'opal'
         `#{@katex_object}.renderToString(#{math}, #{opts}.$$smap)`
