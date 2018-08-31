@@ -53,6 +53,7 @@ describe 'Integration Tests' do
       ADOC
       should have_tag 'div.stemblock'
       should have_tag 'math'
+      should_not have_tag '.katex-error'
     end
 
     it "renders inline #{stem_type}:[] processed by KaTeX" do
@@ -60,6 +61,7 @@ describe 'Integration Tests' do
 
       should have_tag 'p', text: /^Do some math: /
       should have_tag 'math'
+      should_not have_tag '.katex-error'
     end
   end
 
