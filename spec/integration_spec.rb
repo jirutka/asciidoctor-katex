@@ -6,7 +6,7 @@ require 'asciidoctor'
 
 describe 'Integration Tests' do
 
-  subject(:output) { Asciidoctor.convert(input, options) }
+  subject(:output) { convert(input, options) }
 
   let(:input) { '' }  # this is modified in #given
   let(:processor) { Asciidoctor::Katex::Treeprocessor.new(**processor_opts) }
@@ -111,6 +111,24 @@ describe 'Integration Tests' do
       should have_tag 'math'
       should_not have_tag '.katex-error'
     end
+
+    it 'renders error when stem content is invalid' do
+      given 'Do some math: stem:[foo &]'
+
+      should have_tag '.katex-html', text: /KaTeX parse error/
+    end
+
+    context 'when config katex-throw-on-error is true' do
+      before do
+        attributes['katex-throw-on-error'] = true
+      end
+
+      it 'raises an error when stem content is invalid' do
+        given 'Do some math: stem:[foo &]'
+
+        expect { convert(input, options) }.to raise_error
+      end
+    end
   end
 
 
@@ -119,5 +137,9 @@ describe 'Integration Tests' do
   def given(str, opts = {})
     input.replace(str)
     options.merge!(opts)
+  end
+
+  def convert(*args)
+    Asciidoctor.convert(*args)
   end
 end

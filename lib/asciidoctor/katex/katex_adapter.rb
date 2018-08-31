@@ -27,17 +27,19 @@ module Asciidoctor::Katex
     # Renders the given math expression to HTML using KaTeX.
     #
     # @param math [String] the math (LaTeX) expression.
-    # @param options [Hash] options for `katex.renderToString`.
+    # @param opts [Hash] options for `katex.renderToString`.
     #   Keys in under_score notation will be converted to camelCase.
     #   See <https://github.com/Khan/KaTeX#rendering-options>.
     # @return [String] a rendered HTML fragment.
-    def render(math, options = {})
-      options = hash_camelize(options || {})
+    def render(math, opts = {})
+      opts = hash_camelize(opts || {})
 
       if RUBY_PLATFORM == 'opal'
-        `#{@katex_object}.renderToString(#{math}, #{options}.$$smap)`
+        `#{@katex_object}.renderToString(#{math}, #{opts}.$$smap)`
       else
-        ::Katex.render(math, options)
+        opts[:throw_on_error] = opts[:throwOnError]
+        opts[:error_color] = opts[:errorColor] || '#cc0000'
+        ::Katex.render(math, opts)
       end
     end
 
