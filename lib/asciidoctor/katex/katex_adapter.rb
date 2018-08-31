@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'asciidoctor/katex/version'
+require 'asciidoctor/katex/errors'
 require 'katex' unless RUBY_PLATFORM == 'opal'
 
 module Asciidoctor::Katex
@@ -25,11 +26,20 @@ module Asciidoctor::Katex
       opts = @default_options.merge(hash_camelize(opts))
 
       if RUBY_PLATFORM == 'opal'
-        `#{@katex_object}.renderToString(#{math}, #{opts}.$$smap)`
+        begin
+          `#{@katex_object}.renderToString(#{math}, #{opts}.$$smap)`
+        rescue ::JS::Error => err
+          handle_error! err, math
+        end
       else
         opts[:throw_on_error] = opts[:throwOnError]
         opts[:error_color] = opts[:errorColor] || '#cc0000'
-        ::Katex.render(math, opts)
+
+        begin
+          ::Katex.render(math, opts)
+        rescue ::ExecJS::ProgramError => err
+          handle_error! err, math
+        end
       end
     end
 
@@ -43,6 +53,15 @@ module Asciidoctor::Katex
       hash.map { |k, v|
         [k.to_s.gsub(/_\w/) { |s| s[1].upcase }.to_sym, v]
       }.to_h
+    end
+
+    # @param err [Exception]
+    # @param math [String]
+    def handle_error!(err, math)
+      # "#{err}" is needed for Opal/JS
+      # rubocop:disable UnneededInterpolation
+      raise ParseError.new(err, math) if "#{err}".start_with?('ParseError:')
+      raise KatexError.new(err, math)
     end
   end
 end

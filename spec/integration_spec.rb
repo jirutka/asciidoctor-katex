@@ -123,10 +123,20 @@ describe 'Integration Tests' do
         attributes['katex-throw-on-error'] = true
       end
 
-      it 'raises an error when stem content is invalid' do
+      it 'raises ParseError when stem content is invalid' do
         given 'Do some math: stem:[foo &]'
 
-        expect { convert(input, options) }.to raise_error
+        expect {
+          convert(input, options)
+        }.to raise_error Asciidoctor::Katex::ParseError
+      end
+
+      it 'raises ParseError when stem contains some unsupported macro' do
+        given 'Do some math: stem:[\\alpha + \\foo + 2]'
+
+        expect {
+          convert(input, options)
+        }.to raise_error Asciidoctor::Katex::ParseError
       end
     end
   end
