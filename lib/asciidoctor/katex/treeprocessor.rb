@@ -10,17 +10,17 @@ module Asciidoctor::Katex
   # the KaTeX library.
   class Treeprocessor < ::Asciidoctor::Extensions::Treeprocessor
 
-    # @param katex_renderer [#call] callable that accepts a math expression
+    # @param katex_options [Hash] default options for the KaTeX renderer.
+    #   This parameter has no effect when *katex_renderer* is provided.
+    # @param katex_renderer [#call, nil] callable that accepts a math expression
     #   [String] and options [Hash], and returns a rendered expression [String].
-    #   Default is an instance of KatexAdapter.
+    #   Defaults to {KatexAdapter} initialized with the *katex_options*.
     # @param require_stem_attr [Boolean] `true` to skip when `stem` attribute
     #   is not declared, `false` to process anyway.
-    def initialize(katex_renderer: KatexAdapter.new,
-                   require_stem_attr: true,
-                   **)
-      super
-      @katex_renderer = katex_renderer
+    def initialize(katex_options: {}, katex_renderer: nil, require_stem_attr: true, **)
+      @katex_renderer = katex_renderer || KatexAdapter.new(katex_options)
       @require_stem_attr = require_stem_attr
+      super
     end
 
     # @param document [Asciidoctor::Document] the document to process.
