@@ -16,17 +16,17 @@ jobs:
     - env: *adoc-latest
       rvm: jruby-head
 
-    - env: ASCIIDOCTOR_VERSION=1.5.6
-      rvm: 2.4
-
-    - env: ASCIIDOCTOR_VERSION=1.5.6.1
-      rvm: 2.4
+    - env: ASCIIDOCTOR_VERSION=1.5.7
+      rvm: *ruby-latest
 
     - env: ASCIIDOCTOR_VERSION=1.5.6.2
       rvm: *ruby-latest
 
-    - env: ASCIIDOCTOR_VERSION=1.5.7
-      rvm: *ruby-latest
+    - env: ASCIIDOCTOR_VERSION=1.5.6.1
+      rvm: 2.4
+
+    - env: ASCIIDOCTOR_VERSION=1.5.6
+      rvm: 2.4
 
     - env: ASCIIDOCTOR_VERSION="git:master"
       rvm: *ruby-latest
