@@ -10,8 +10,8 @@ unless ENV.fetch('ASCIIDOCTOR_VERSION', '').empty?
 end
 
 group :development do
-  # Keep in sync with version used for asciidoctor.js.
-  gem 'opal', '~> 0.11.0'
+  # Keep in sync with the version used in asciidoctor.js.
+  gem 'opal', git: 'https://github.com/opal/opal.git', ref: '6703d8d'
 end
 
 group :ci do

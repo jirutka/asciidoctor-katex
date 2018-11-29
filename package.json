@@ -33,9 +33,9 @@
     "katex": ">=0.9.0 <1.0.0"
   },
   "devDependencies": {
-    "asciidoctor.js": "~1.5.6"
+    "asciidoctor.js": "~1.5.9"
   },
   "peerDependencies": {
-    "asciidoctor.js": "~1.5.6"
+    "asciidoctor.js": "~1.5.9"
   }
 }
