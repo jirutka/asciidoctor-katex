@@ -39,7 +39,7 @@ namespace :build do
     mkdir_p(File.dirname(out_file), verbose: false)
     File.open(out_file, 'w') do |file|
       template = File.read('src/asciidoctor-katex.tmpl.js')
-      file << template.sub('//OPAL-GENERATED-CODE//', builder.to_s)
+      file << template.sub('//OPAL-GENERATED-CODE//') { builder.to_s }
     end
     File.binwrite "#{out_file}.map", builder.source_map
   end
