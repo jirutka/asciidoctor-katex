@@ -22,7 +22,7 @@ module Asciidoctor::Katex
     # @param transform [String, nil] the conversion method to call.
     # @param opts [Hash] options to pass to the converter.
     # @return [String] output of the converter.
-    def convert(node, transform = nil, opts = {})
+    def convert(node, transform = node.node_name, opts = {})
       # Call the underlying converter.
       output = __getobj__.convert(node, transform, opts)
 
