@@ -33,7 +33,7 @@ This project provides an http://asciidoctor.org/[Asciidoctor] extension for conv
 === Node.js
 
 * https://nodejs.org/[Node.js] 8+
-* https://www.npmjs.com/package/asciidoctor.js[asciidoctor.js] 1.5.6
+* https://www.npmjs.com/package/@asciidoctor/core[@asciidoctor/core] ~2.0.0
 * https://www.npmjs.com/package/katex[katex (module)] 0.9.0+
 
 
@@ -85,7 +85,7 @@ IMPORTANT: Bundler automatically _requires_ all the specified gems.
 [source, js, subs="+attributes"]
 ----
 // Load asciidoctor.js and {gem-name}.
-const asciidoctor = require('asciidoctor.js')()
+const asciidoctor = require('@asciidoctor/core')()
 const asciidoctorKatex = require('{gem-name}')
 
 // See documentation at the end of this section.
