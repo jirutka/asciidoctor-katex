@@ -3,7 +3,7 @@ language: ruby
 
 jobs:
   include:
-    - env: &adoc-latest ASCIIDOCTOR_VERSION=2.0.5
+    - env: &adoc-latest ASCIIDOCTOR_VERSION=2.0.10
       rvm: &ruby-latest 2.7
     - env: *adoc-latest
       rvm: 2.6
