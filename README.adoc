@@ -21,6 +21,7 @@ This project provides an http://asciidoctor.org/[Asciidoctor] extension for conv
 
 == Requirements
 
+ifndef::npm-readme[]
 === Ruby
 
 * https://www.ruby-lang.org/[Ruby] 2.3+ or http://jruby.org/[JRuby] 9.1+
@@ -31,6 +32,7 @@ This project provides an http://asciidoctor.org/[Asciidoctor] extension for conv
 
 
 === Node.js
+endif::npm-readme[]
 
 * https://nodejs.org/[Node.js] 8+
 * https://www.npmjs.com/package/@asciidoctor/core[@asciidoctor/core] >=2.0.0 <2.2.0
@@ -39,6 +41,7 @@ This project provides an http://asciidoctor.org/[Asciidoctor] extension for conv
 
 == Installation
 
+ifndef::npm-readme[]
 === Ruby
 
 Install {gem-name} from Rubygems:
@@ -53,6 +56,7 @@ gem install {gem-name} --pre
 
 
 === Node.js
+endif::npm-readme[]
 
 Install {gem-name} from npmjs.com:
 
@@ -62,6 +66,7 @@ npm install --save {gem-name}
 
 == Usage
 
+ifndef::npm-readme[]
 === CLI
 
 If you invoke Asciidoctor from command-line, use option `-r` to load the extension:
@@ -81,6 +86,7 @@ IMPORTANT: Bundler automatically _requires_ all the specified gems.
 
 
 === Node.js
+endif::npm-readme[]
 
 [source, js, subs="+attributes"]
 ----

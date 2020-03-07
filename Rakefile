@@ -28,7 +28,7 @@ task :readme2md do
   require 'pandoc-ruby'
 
   docbook = Asciidoctor
-    .load_file('README.adoc', header_footer: true, backend: 'docbook')
+    .load_file('README.adoc', header_footer: true, backend: 'docbook', attributes: 'npm-readme')
     .convert
   markdown = PandocRuby
     .convert(docbook, from: :docbook, to: :markdown_github, 'base-header-level': 2)
