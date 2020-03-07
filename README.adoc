@@ -34,9 +34,9 @@ ifndef::npm-readme[]
 === Node.js
 endif::npm-readme[]
 
-* https://nodejs.org/[Node.js] 8+
+* https://nodejs.org/[Node.js] >=8
 * https://www.npmjs.com/package/@asciidoctor/core[@asciidoctor/core] >=2.0.0 <2.2.0
-* https://www.npmjs.com/package/katex[katex (module)] 0.9.0+
+* https://www.npmjs.com/package/katex[katex (module)] >=0.9.0
 
 
 == Installation
