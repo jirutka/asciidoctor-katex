@@ -3,6 +3,6 @@
 module Asciidoctor
   module Katex
     # Version of the asciidoctor-katex gem.
-    VERSION = '0.3.0'
+    VERSION = '0.3.1'
   end
 end
