@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
 
   s.summary     = 'Asciidoctor extension that converts latexmath to HTML using KaTeX at build-time'
 
-  s.files       = Dir['lib/**/*', '*.gemspec', 'LICENSE*', 'README*']
+  s.files       = Dir['lib/**/*', '*.gemspec', 'LICENSE*', 'README.adoc']
 
   s.required_ruby_version = '>= 2.3'
 
@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'katex', '~> 0.4.3'
 
   s.add_development_dependency 'kramdown', '~> 1.17'
+  s.add_development_dependency 'pandoc-ruby', '~> 2.0'
   s.add_development_dependency 'rake', '~> 12.0'
   s.add_development_dependency 'rspec', '~> 3.7'
   s.add_development_dependency 'rspec-html-matchers', '~> 0.9.1'

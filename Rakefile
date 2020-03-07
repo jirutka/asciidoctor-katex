@@ -23,6 +23,19 @@ rescue LoadError => e
   warn "#{e.path} is not available"
 end
 
+task :readme2md do
+  require 'asciidoctor'
+  require 'pandoc-ruby'
+
+  docbook = Asciidoctor
+    .load_file('README.adoc', header_footer: true, backend: 'docbook')
+    .convert
+  markdown = PandocRuby
+    .convert(docbook, from: :docbook, to: :markdown_github, 'base-header-level': 2)
+
+  File.write('README.md', markdown)
+end
+
 namespace :build do
   desc 'Transcompile to JavaScript using Opal'
   task :js do

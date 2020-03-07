@@ -16,10 +16,10 @@
   "files": [
     "dist/asciidoctor-katex.js",
     "LICENSE",
-    "README.adoc"
+    "README.md"
   ],
   "scripts": {
-    "prepublishOnly": "bundle install && bundle exec rake build:js"
+    "prepublishOnly": "bundle install && bundle exec rake build:js && bundle exec rake readme2md"
   },
   "keywords": [
     "asciidoctor",

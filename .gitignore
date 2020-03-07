@@ -8,6 +8,7 @@
 node_modules/
 Gemfile.lock
 package-lock.json
+README.md
 *.bundle
 *.gem
 *.log
