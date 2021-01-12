@@ -10,10 +10,7 @@ unless ENV.fetch('ASCIIDOCTOR_VERSION', '').empty?
 end
 
 group :development do
-  # Keep in sync with version used in opal-node-runtime <- asciidoctor.js.
-  # TODO: Maybe replace with JS version after
-  #   https://github.com/Mogztter/opal-node-compiler/issues/6 is resolved.
-  gem 'opal', github: 'opal/opal', ref: '31d26d69'
+  gem 'opal', '~> 0.10.6'
 end
 
 group :ci do
