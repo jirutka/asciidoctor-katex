@@ -22,7 +22,10 @@ module Asciidoctor::Katex
     #   Defaults to {KatexAdapter} initialized with the *katex_options*.
     # @param require_stem_attr [Boolean] `true` to skip when `stem` attribute
     #   is not declared, `false` to process anyway.
-    def initialize(katex_options: {}, katex_renderer: nil, require_stem_attr: true, **)
+    def initialize(kwargs = {})
+      katex_options = kwargs.fetch(:katex_options, {})
+      katex_renderer = kwargs.fetch(:katex_renderer, nil)
+      require_stem_attr = kwargs.fetch(:require_stem_attr, true)
       @katex_renderer = katex_renderer || KatexAdapter.new(katex_options)
       @require_stem_attr = require_stem_attr
       super

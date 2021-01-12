@@ -28,10 +28,11 @@ module Asciidoctor::Katex
       opts[:error_color] = opts[:errorColor] || '#cc0000'
 
       begin
-        ::Katex.render(math, opts)
-      rescue ::ExecJS::ProgramError => err
-        raise ParseError.new(err, math) if err.to_s.start_with?('ParseError:')
-        raise KatexError.new(err, math)
+        ::Katex.render(math, **opts)
+      rescue ::ExecJS::ProgramError => e
+        raise ParseError.new(e, math) if e.to_s.start_with?('ParseError:')
+
+        raise KatexError.new(e, math)
       end
     end
 
