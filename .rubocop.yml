@@ -1,5 +1,10 @@
+require: 
+  - rubocop-rspec
+  - rubocop-rake
+
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 3.0
+  NewCops: enable
 
 # False positive...
 Bundler/DuplicatedGem:
@@ -23,21 +28,21 @@ Layout/ExtraSpacing:
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
-Lint/EndAlignment:
+Layout/EndAlignment:
   EnforcedStyleAlignWith: variable
 
-Layout/IndentHash:
+Layout/FirstHashElementIndentation:
   Exclude:
     - Rakefile
+
+Layout/LineLength:
+  Max: 99
 
 Metrics/AbcSize:
   Max: 30
 
 Metrics/CyclomaticComplexity:
   Max: 12
-
-Metrics/LineLength:
-  Max: 99
 
 Metrics/MethodLength:
   Max: 35
@@ -91,8 +96,8 @@ Style/NegatedIf:
 Style/RedundantFreeze:
   Enabled: false
 
-Style/TrailingCommaInArguments:
+Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
 
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma

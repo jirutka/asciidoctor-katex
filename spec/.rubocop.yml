@@ -24,9 +24,6 @@ Layout/SpaceBeforeComment:
 Layout/SpaceInsideBlockBraces:
   Enabled: false
 
-Layout/SpaceInsideBrackets:
-  Enabled: false
-
 Layout/SpaceInsideParens:
   Enabled: false
 
@@ -56,4 +53,10 @@ Style/SymbolArray:
   Enabled: false
 
 Style/WordArray:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
   Enabled: false

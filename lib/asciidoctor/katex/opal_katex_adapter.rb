@@ -28,11 +28,13 @@ module Asciidoctor::Katex
 
       begin
         `#{@katex_object}.renderToString(#{math}, #{opts}.$$smap)`
-      rescue ::JS::Error => err
-        # "#{err}" is really needed for Opal/JS, #to_s returns a different string.
-        # rubocop:disable UnneededInterpolation
-        raise ParseError.new(err, math) if "#{err}".start_with?('ParseError:')
-        raise KatexError.new(err, math)
+      rescue ::JS::Error => e
+        # rubocop:disable Style/RedundantInterpolation
+        # "#{e}" is really needed for Opal/JS, #to_s returns a different string.
+        raise ParseError.new(e, math) if "#{e}".start_with?('ParseError:')
+
+        raise KatexError.new(e, math)
+        # rubocop:enable Style/RedundantInterpolation
       end
     end
 

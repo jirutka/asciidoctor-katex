@@ -5,8 +5,8 @@ begin
 
   RSpec::Core::RakeTask.new(:spec)
 
+  desc 'Run specification tests'
   task :test => :spec
-  task :default => :spec
 rescue LoadError => e
   warn "#{e.path} is not available"
 end
@@ -18,11 +18,16 @@ begin
     t.options = ['--display-cop-names', '--fail-level', 'W']
   end
 
-  task :default => :rubocop
+  desc 'Run specification tests and linting'
+  task :default do
+    Rake::Task[:spec].execute
+    Rake::Task[:rubocop].execute
+  end
 rescue LoadError => e
   warn "#{e.path} is not available"
 end
 
+desc 'Convert README.adoc to markdown'
 task :readme2md do
   require 'asciidoctor'
   require 'pandoc-ruby'
