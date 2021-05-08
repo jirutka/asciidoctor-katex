@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'asciidoctor', '>= 1.5.6', '< 3.0'
   s.add_runtime_dependency 'katex', '~> 0.4.3'
 
-  s.add_development_dependency 'kramdown', '~> 1.17'
+  s.add_development_dependency 'kramdown', '~> 2.3'
   s.add_development_dependency 'pandoc-ruby', '~> 2.0'
   s.add_development_dependency 'rake', '~> 12.0'
   s.add_development_dependency 'rspec', '~> 3.7'
