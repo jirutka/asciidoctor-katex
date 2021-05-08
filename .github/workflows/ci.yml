@@ -21,7 +21,6 @@ jobs:
           - { asciidoctor: 2.0.0       , ruby: 2.7 }
           - { asciidoctor: 1.5.8       , ruby: 2.7 }
           - { asciidoctor: 1.5.7.1     , ruby: 2.7 }
-          - { asciidoctor: 1.5.7       , ruby: 2.7 }
           - { asciidoctor: 1.5.6.2     , ruby: 2.7 }
           - { asciidoctor: 'git:master', ruby: 2.7 }
     env:
