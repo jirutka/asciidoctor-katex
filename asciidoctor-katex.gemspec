@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'kramdown', '~> 2.3'
   s.add_development_dependency 'pandoc-ruby', '~> 2.0'
-  s.add_development_dependency 'rake', '~> 12.0'
+  s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'rspec', '~> 3.7'
   s.add_development_dependency 'rspec-html-matchers', '~> 0.9.1'
   s.add_development_dependency 'rubocop', '~> 0.51.0'
