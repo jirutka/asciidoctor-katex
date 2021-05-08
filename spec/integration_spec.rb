@@ -115,7 +115,7 @@ describe 'Integration Tests' do
     it 'renders error when stem content is invalid' do
       given 'Do some math: stem:[foo &]'
 
-      should have_tag '.katex-html', text: /KaTeX parse error/
+      should have_tag '.katex-error', title: /KaTeX parse error/
     end
 
     context 'when config katex-throw-on-error is true' do
