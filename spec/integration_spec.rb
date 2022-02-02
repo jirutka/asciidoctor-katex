@@ -1,6 +1,7 @@
 require_relative 'spec_helper'
 
 require 'asciidoctor/katex/treeprocessor'
+require 'asciidoctor/katex/postprocessor'
 require 'asciidoctor'
 
 
@@ -9,15 +10,20 @@ describe 'Integration Tests' do
   subject(:output) { convert(input, options) }
 
   let(:input) { '' }  # this is modified in #given
-  let(:processor) { Asciidoctor::Katex::Treeprocessor.new(**processor_opts) }
+  let(:katex_tree_processor) { Asciidoctor::Katex::Treeprocessor.new(**processor_opts) }
+  let(:katex_postprocessor) { Asciidoctor::Katex::Postprocessor.new(**processor_opts) }
   let(:processor_opts) { {} }
 
   let(:options) {
-    processor_ = processor
+    tree_processor = katex_tree_processor
+    postprocessor = katex_postprocessor
     {
       safe: :safe,
       header_footer: false,
-      extensions: proc { tree_processor processor_ },
+      extensions: proc do
+        tree_processor tree_processor
+        postprocessor postprocessor
+      end,
       attributes: attributes,
     }
   }
@@ -88,6 +94,13 @@ describe 'Integration Tests' do
 
     include_examples :processed, 'stem'
     include_examples :processed, 'latexmath'
+
+    it 'renders document with header_footer without MathJax script tags' do
+      given 'Do some math: stem:[a < b > c]', header_footer: true
+
+      should_not have_tag '[src*="mathjax"]'
+      should_not have_tag '[type*="mathjax"]'
+    end
 
     # Issue #2
     it 'renders inline stem:[] with "<" and ">" processed by KaTeX' do

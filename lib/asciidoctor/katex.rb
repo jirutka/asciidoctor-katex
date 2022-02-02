@@ -4,9 +4,11 @@ require 'asciidoctor/extensions' unless RUBY_PLATFORM == 'opal'
 require 'asciidoctor/katex/version'
 require 'asciidoctor/katex/errors'
 require 'asciidoctor/katex/treeprocessor'
+require 'asciidoctor/katex/postprocessor'
 
 unless RUBY_PLATFORM == 'opal'
   Asciidoctor::Extensions.register do
     treeprocessor Asciidoctor::Katex::Treeprocessor
+    postprocessor Asciidoctor::Katex::Postprocessor
   end
 end
