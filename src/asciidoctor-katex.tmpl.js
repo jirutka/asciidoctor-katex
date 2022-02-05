@@ -50,6 +50,13 @@
   }
 
   /**
+   * @return A new instance of `Asciidoctor::Katex::Postprocessor`.
+   */
+  function PostProcessor () {
+    return resolveModule('Postprocessor').$new()
+  }
+
+  /**
    * @return {string} Version of this extension.
    */
   function getVersion () {
@@ -70,16 +77,19 @@
       checkAsciidoctor()
       registry = Opal.Asciidoctor.Extensions
     }
-    var processor = TreeProcessor(opts);
+    var treeProcessor = TreeProcessor(opts)
+    var postProcessor = PostProcessor()
 
     // global registry
     if (typeof registry.register === 'function') {
       registry.register(function () {
-        this.treeProcessor(processor)
+        this.treeProcessor(treeProcessor)
+        this.postprocessor(postProcessor)
       })
     // custom registry
     } else if (typeof registry.block === 'function') {
-      registry.treeProcessor(processor)
+      registry.treeProcessor(treeProcessor)
+      registry.postprocessor(postProcessor)
     } else {
       throw new TypeError('Invalid registry object')
     }
@@ -88,6 +98,7 @@
 
   var facade = {
     TreeProcessor: TreeProcessor,
+    PostProcessor: PostProcessor,
     getVersion: getVersion,
     register: register,
   }

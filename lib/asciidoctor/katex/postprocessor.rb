@@ -11,7 +11,7 @@ module Asciidoctor::Katex
     # @return [String] a modified *output*.
     def process(_, output)
       output
-        .sub(%r{<script type="text/x-mathjax-config">.*?</script>}m, '')
+        .sub(%r{<script type="text/x-mathjax-config">.*?</script>}m, '')  # FIXME: broken in JS
         .sub(%r{<script src=".*?/MathJax\.js\?config=TeX-MML-AM_HTMLorMML"></script>}, '')
     end
   end
