@@ -8,7 +8,7 @@ require 'asciidoctor/katex/postprocessor'
 
 unless RUBY_PLATFORM == 'opal'
   Asciidoctor::Extensions.register do
-    treeprocessor Asciidoctor::Katex::Treeprocessor
-    postprocessor Asciidoctor::Katex::Postprocessor
+    treeprocessor Asciidoctor::Katex::Treeprocessor.new
+    postprocessor Asciidoctor::Katex::Postprocessor.new
   end
 end
