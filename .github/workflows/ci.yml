@@ -31,7 +31,7 @@ jobs:
       ASCIIDOCTOR_VERSION: ${{ matrix.asciidoctor }}
     continue-on-error: ${{ endsWith(matrix.ruby, 'head') || matrix.asciidoctor == 'git:main' }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - run: sudo apt-get install pandoc
 
@@ -58,7 +58,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - run: sudo apt-get install pandoc
 
@@ -67,9 +67,9 @@ jobs:
           ruby-version: 2.7
           bundler-cache: true
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: 12
+          node-version: 16
           registry-url: https://registry.npmjs.org
 
       - run: bundle exec rake build:js
