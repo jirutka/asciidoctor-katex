@@ -15,6 +15,11 @@ image:https://img.shields.io/npm/v/{gem-name}.svg?style=flat[npm Version, link="
 image:https://img.shields.io/badge/yard-docs-blue.svg[Yard Docs, link="http://www.rubydoc.info/github/{gh-name}/{gh-branch}"]
 endif::env-github[]
 
+// This is used for testing on CI.
+ifdef::env-test[]
+:stem: latexmath
+stem:[E = mc^2]
+endif::env-test[]
 
 This project provides an http://asciidoctor.org/[Asciidoctor] extension for converting block and inline https://asciidoctor.org/docs/user-manual/#activating-stem-support[STEM] in TeX notation (latexmath) to HTML using https://khan.github.io/KaTeX[KaTeX] library right during document conversion (instead of in browser on client-side).
 

@@ -52,6 +52,13 @@ jobs:
 
       - run: bundle exec rake readme2md
 
+      - name: Build and install gem locally
+        run: |
+          gem build asciidoctor-katex.gemspec
+          gem install ./asciidoctor-katex-*.gem
+
+      - run: asciidoctor -r asciidoctor-katex -a env-test README.adoc
+
   publish:
     name: Publish to RubyGems and npmjs
     needs: [test]
